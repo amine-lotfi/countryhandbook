@@ -129,3 +129,7 @@ input::placeholder {
 .res-elmnt {
     animation: fadeIn 0.6s ease-in-out;
 }
+
+#tip-text {
+    animation: fadeIn 0.6s ease-in-out;
+}
