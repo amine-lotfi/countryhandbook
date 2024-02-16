@@ -1,0 +1,117 @@
+/* Google fonts: Poppins */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;500;600;700;800;900&display=swap");
+
+:root {
+    --bg-color: #242526;
+    --second-bg-color: #3a3b3c;
+    --text-color: #F8F8F8;
+    --main-color: #FFEA04;
+    --btn-hover-color: #FFEA0480;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Poppins, sans-serif;
+    transition: all ease 0.5s;
+}
+
+body {
+    background-color: var(--second-bg-color);
+}
+
+/* changes the selected text color and bg color */
+::selection {
+    background-color: var(--main-color);
+    color: var(--bg-color);
+  }
+
+.container {
+    width: 100%;
+    min-height: 100vh;
+    margin: 0.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card {
+    border-radius: 10px;
+    padding: 2rem;
+    background-color: var(--bg-color);
+}
+
+.card-title h1 {
+    color: var(--main-color);
+    font-weight: 600;
+}
+
+.card-body input {
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    background-color: var(--second-bg-color);
+    color: var(--text-color);
+}
+
+.card-body input:active,
+.card-body input:focus {
+    color: var(--text-color);
+    border: none;
+    outline: none;
+    box-shadow: none;
+    background-color: var(--second-bg-color);
+    border: 2px solid var(--main-color);
+}
+
+input::placeholder {
+    color: var(--text-color) !important;
+    opacity: 0.4 !important;
+}
+
+.btn-search,
+.btn-search:active,
+.btn-search:focus {
+    background-color: var(--main-color);
+    color: var(--bg-color);
+    font-weight: 600;
+    border-radius: 5px;
+}
+
+.btn-search:hover {
+    background-color: var(--btn-hover-color);
+    color: var(--text-color);
+    transition: all ease 0.5s;
+}
+
+.btn-maps {
+    background-color: transparent;
+    color: var(--main-color);
+    font-weight: 600;
+}
+
+.btn-maps:hover {
+    color: var(--btn-hover-color);
+    transition: all ease 0.5s;
+}
+
+.btn-streets {
+    background-color: transparent;
+    color: var(--main-color);
+    font-weight: 600;
+}
+
+.btn-streets:hover {
+    color: var(--btn-hover-color);
+    transition: all ease 0.5s;
+}
+
+.footer {
+    background-color: var(--second-bg-color);
+}
+
+.footer small {
+    color: var(--main-color);
+    font-weight: 600;
+}
