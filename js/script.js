@@ -11,7 +11,7 @@ search_btn.addEventListener("click", () => {
 
     if (country_input.value === "") {
 
-        result.innerHTML = `<h5 class="text-center mt-5 text-danger" id="tip-text">You have not typed anything! Please enter a country name.<br>i.e: Germany</h5>`;
+        result.innerHTML = `<h5 class="text-center mt-5 text-danger" id="tip-text"><i class="bi bi-info-circle-fill"></i> You have not typed anything! Please enter a country name.<br>i.e: Germany</h5>`;
 
     } else {
 
@@ -30,12 +30,12 @@ search_btn.addEventListener("click", () => {
             <div class="col">
 
                 <div class="col text-center">
-                    <h4 class="text-light">${data[0].name.common}</h4>
-                    <p class="text-light">${data[0].name.official}</p>
+                    <h4 class="text-light res-elmnt">${data[0].name.common}</h4>
+                    <p class="text-light res-elmnt">${data[0].name.official}</p>
                 </div>
 
                 <div class="col text-center">
-                    <img src="${data[0].flags.svg}" class="img-fluid w-50 mb">
+                    <img src="${data[0].flags.svg}" class="img-fluid w-50 res-elmnt">
                 </div>
 
             </div>
@@ -45,15 +45,15 @@ search_btn.addEventListener("click", () => {
             <div class="row">
 
                 <div class="col">
-                    <p class="text-light mb-0">✱ Capital: ${data[0].capital}</p>
-                    <p class="text-light mb-0">✱ Population: ${formatPopulation(data[0].population)}</p>
-                    <p class="text-light mb-0">✱ Continent: ${data[0].continents}</p>
+                    <p class="text-light mb-0 res-elmnt">✱ Capital: ${data[0].capital}</p>
+                    <p class="text-light mb-0 res-elmnt">✱ Population: ${formatPopulation(data[0].population)}</p>
+                    <p class="text-light mb-0 res-elmnt">✱ Continent: ${data[0].continents}</p>
                 </div>
 
                 <div class="col">
-                    <p class="text-light mb-0">✱ Codes: ${data[0].cca2} | ${data[0].ccn3}</p>
-                    <p class="text-light mb-0">✱ Currency: ${data[0].currencies[Object.keys(data[0].currencies)].name} | ${data[0].currencies[Object.keys(data[0].currencies)].symbol}</p>
-                    <p class="text-light mb-0">✱ Timezone: UTC +01:00</p>
+                    <p class="text-light mb-0 res-elmnt">✱ Codes: ${data[0].cca2} | ${data[0].ccn3}</p>
+                    <p class="text-light mb-0 res-elmnt">✱ Currency: ${data[0].currencies[Object.keys(data[0].currencies)].name} | ${data[0].currencies[Object.keys(data[0].currencies)].symbol}</p>
+                    <p class="text-light mb-0 res-elmnt">✱ Timezone: UTC +01:00</p>
                 </div>
 
             </div>
@@ -63,8 +63,8 @@ search_btn.addEventListener("click", () => {
                 <div class="row">
 
                 <div class="col text-center">
-                    <p class="text-light mb-0">✱ Language(s): ${Object.values(data[0].languages).toString().split(",").join(" | ")}</p>
-                    <p class="text-light mb-0">✱ Borders: ${Object.values(data[0].borders).toString().split(",").join(" | ")}</p>
+                    <p class="text-light mb-0 res-elmnt">✱ Language(s): ${Object.values(data[0].languages).toString().split(",").join(" | ")}</p>
+                    <p class="text-light mb-0 res-elmnt">✱ Borders: ${Object.values(data[0].borders).toString().split(",").join(" | ")}</p>
                 </div>
 
             </div>
@@ -75,7 +75,7 @@ search_btn.addEventListener("click", () => {
 
                 <div class="col text-center">
                     <p class="text-light mb-0">✱ Coat Of Arms:</p>
-                    <img src="${data[0].coatOfArms.svg}" class="img-fluid w-25" alt="Coat Of Arms not found">
+                    <img src="${data[0].coatOfArms.svg}" class="img-fluid w-25 res-elmnt" alt="Coat Of Arms not found">
                 </div>
 
             </div>
@@ -85,12 +85,12 @@ search_btn.addEventListener("click", () => {
             <div class="row text-center">
 
                 <div class="col">
-                    <a href="${data[0].maps.googleMaps}" class="btn btn-maps" target="_blank"><i class="bi bi-box-arrow-up-right"></i>
+                    <a href="${data[0].maps.googleMaps}" class="btn btn-maps res-elmnt" target="_blank"><i class="bi bi-box-arrow-up-right"></i>
                         Maps</a>
                 </div>
 
                 <div class="col">
-                    <a href="${data[0].maps.openStreetMaps}" class="btn btn-streets" target="_blank"><i class="bi bi-box-arrow-up-right"></i>
+                    <a href="${data[0].maps.openStreetMaps}" class="btn btn-streets res-elmnt" target="_blank"><i class="bi bi-box-arrow-up-right"></i>
                         Streets</a>
                 </div>
 
@@ -100,7 +100,7 @@ search_btn.addEventListener("click", () => {
             })
             .catch(() => {
 
-                result.innerHTML = `<h5 class="text-center mt-5 text-danger" id="tip-text">:( Country not found. Please double check the spelling!</h5>`;
+                result.innerHTML = `<h5 class="text-center mt-5 text-danger res-elmnt" id="tip-text">:( Country not found. Please double check the spelling!</h5>`;
 
             });
     }
@@ -112,3 +112,14 @@ function formatPopulation(population) {
     return population.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
 }
+
+// this to add an event listener for the Enter key press event on the input field
+country_input.addEventListener("keyup", function (event) {
+
+    // check if the Enter key (key code 13) is pressed
+    if (event.keyCode === 13) {
+
+        // trigger a click event on the submit button
+        search_btn.click();
+    }
+});
